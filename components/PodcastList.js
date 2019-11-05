@@ -1,4 +1,5 @@
-import Link from 'next/link'
+import { Link } from '../routes'
+import slug from '../helpers/slug'
 
 export default class extends React.Component {
   render() {
@@ -6,13 +7,22 @@ export default class extends React.Component {
 
     return <div>
       { podcasts.map((podcast) => (
-        <Link href={`/podcast?id=${podcast.id}`} prefetch key={podcast.id}>
-          <a className='podcast'>
-            <h3>{ podcast.title }</h3>
-            <div className='meta'>
-              { Math.ceil(podcast.duration / 60) } minutes
-            </div>
-          </a>
+        <Link 
+            route='podcast'
+            params={{ 
+                slugChannel: slug(podcast.channel.title),    
+                idChannel: podcast.channel.id,
+                slug: slug(podcast.title),
+                id: podcast.id
+            }}
+            prefetch key={podcast.id}
+        >
+            <a className='podcast'>
+                <h3>{ podcast.title }</h3>
+                <div className='meta'>
+                    { Math.ceil(podcast.duration / 60) } minutes
+                </div>
+            </a>
         </Link>
       )) }
 

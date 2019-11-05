@@ -1,5 +1,6 @@
 import 'isomorphic-fetch'
 import Link from 'next/link'
+import slug from '../helpers/slug'
 import Layout from '../components/Layout'
 import Error from 'next/error'
 
@@ -10,7 +11,7 @@ export default class extends React.Component {
     try {
       let fetchClip = await fetch(`https://api.audioboom.com/audio_clips/${id}.mp3`)
 
-      if( fetchClip.status >= 400 ) {
+      if( fetchClip.status >= 400 ) { //No existe la pagina
         res.statusCode = fetchClip.status
         return { clip: null, statusCode: fetchClip.status }
       }
@@ -35,7 +36,13 @@ export default class extends React.Component {
       <div className='modal'>
         <div className='clip'>
           <nav>
-            <Link href={`/channel?id=${clip.channel.id}`}>
+            <Link 
+                route= 'channel'
+                params={{
+                    slug: slug(clip.channel.title),
+                    id: clip.channel.id
+                }}
+            >
               <a className='close'>&lt; Volver</a>
             </Link>
           </nav>

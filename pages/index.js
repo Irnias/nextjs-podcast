@@ -3,6 +3,7 @@ import Layout from '../components/Layout'
 import ChannelGrid from '../components/ChannelGrid'
 import Error from 'next/error'
 
+
 export default class extends React.Component {
 
   static async getInitialProps({ res }) {
@@ -23,9 +24,12 @@ export default class extends React.Component {
       return <Error statusCode={ statusCode } />
     }
 
-    return <Layout title="Podcasts">
-      <ChannelGrid channels={ channels } />
-    </Layout>
+    return <div>
+        <Layout title="Podcasts">
+            <ChannelGrid channels={ channels } />
+        </Layout>
+        
+    </div>
   }
   
 }
