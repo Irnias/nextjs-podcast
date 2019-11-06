@@ -1,4 +1,5 @@
-import 'isomorphic-fetch'
+require('es6-promise').polyfill();
+require('isomorphic-fetch');
 import Layout from '../components/Layout'
 import ChannelGrid from '../components/ChannelGrid'
 import Error from 'next/error'
