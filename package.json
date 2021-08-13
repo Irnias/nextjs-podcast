@@ -14,7 +14,7 @@
   "dependencies": {
     "es6-promise": "^4.2.8",
     "isomorphic-fetch": "^2.2.1",
-    "next": "^9.3.2",
+    "next": "^11.1.0",
     "next-routes": "^1.4.2",
     "now": "^16.4.4",
     "nprogress": "^0.2.0",
